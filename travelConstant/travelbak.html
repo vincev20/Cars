@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Travel Graphs</title>
+    <!--<link rel="stylesheet" href="css/normalize.css">-->
+    <link rel="stylesheet" href="../css/style2.css">
+  </head>
+
+  <body>
+  	
+  
+  	<div class="main">
+  		<h1>Indirect Proportion Example 1</h1>
+        <div id="chartContainer" style="height: 300px; width: 500px;"></div>
+    <div id="chartContainer2" style="height: 300px; width: 500px;"></div>
+        
+        
+        <div class="frame">
+        	 
+        	 <img id="car1" src="newimages/Travel-Graphs-Simulation1-Constant-Speed-motorcycle.png">
+              
+        </div>
+        <div class="buttonBar">
+           <a id="backButton" class="button2" href="indirect.html">
+           		<img src="../images3/backButton.png">
+           </a>
+          
+         
+           <a id="homeButton" class="button2" href="home.html">
+           		<img src="../images3/homeButton.png">
+           </a>
+           
+       </div>
+        
+        <div id="topContainer">
+        <select id="type">
+          <option>Constant</option>
+          <option>Increasing</option>
+          <option>Decreasing</option>
+    
+        </select>Speed<br>
+       
+        <input type="checkbox" id="check2" value="Car">Distance-Time Graph<br>
+         <input type="checkbox" id="check1" value="">Speed-Time Graph<br>
+        <span id="counter"> Time/Clock Counter: <input id="step" value="0"> </span>
+  	</div>
+        
+        <div class="buttonBar">
+           <a id="button1" class="button" >
+           		Play
+           </a>
+           <a id="button2" class="button">
+           		Pause
+           </a>
+           <a id="button3" class="button">
+           		Rewind
+           </a>
+           <a id="button4" class="button">
+           		Forward
+           </a>
+           <a id="resetButton" class="button">
+           		Reset
+           </a>
+        
+        </div>
+        
+        
+
+       
+       <div class="last">
+       </div>
+        
+  	</div>  
+    
+  
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+	<script src="https://canvasjs.com/assets/script/canvasjs.min.js"></script>
+	<script src="myscript.js"></script>
+  </body>
+
+  
+</html>

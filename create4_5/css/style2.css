@@ -1,0 +1,210 @@
+#type, #check1, #check2 {
+  text-align: right;
+}
+
+#topContainer {
+  text-align: right;
+
+}
+
+#counter {
+  background-color: pink;
+
+}
+
+#button11 {
+  float: right;
+}
+
+
+body {
+  background-color: white;
+  background-image: url("../images/towns.png");
+  background-position: center;
+  display: fixed;
+  background-repeat: no-repeat;
+  //opacity: 0.7;
+
+}
+`
+ul {
+  padding: 0px 30px;
+}
+
+h2 {
+
+  font-style: italic;
+  border-bottom: 2px solid rgb(0, 0, 0);
+  padding: 0px 30px 15px 50px;
+  color: rgb(0, 0, 0);
+  font-family: 'Libre Baskerville', serif;
+  margin-bottom: 0px;
+
+}
+
+a {
+  color: rgb(0, 0, 150);
+  font-family: 'Libre Baskerville', serif;
+  margin-bottom: 0px;
+  text-decoration: none;
+
+}
+
+a:hover {
+  color: rgb(0, 0, 230);
+  font-weight: bold;
+
+}
+
+p {
+  color: rgb(0, 0, 0);
+  font-family: 'Libre Baskerville', serif;
+  margin-bottom: 0px;
+  padding: 0px 80px;
+
+}
+
+img {
+  display: block;
+  margin: auto;
+  width: 80%;
+  border: 1px solid black;
+
+}
+
+
+.imageParagraph {
+  padding-top: 10px;
+  border-bottom: 2px dashed rgb(0, 0, 150);
+  padding-bottom: 30px;
+  width: 80%;
+  margin: auto;
+}
+
+.imageTitle {
+  padding-top: 30px;
+  width: 80%;
+  margin: auto;
+  font-weight: bold;
+  font-size: 1.2em;
+}
+
+.schoolItem {
+  margin-bottom: 0px;
+  padding: 0px 0px 10px 30px;
+
+}
+
+.links {
+  display: inline;
+
+
+}
+
+.experience {
+  width: 87%;
+  margin: auto;
+  padding: 30px 30px 15px 10px;
+  al
+}
+
+
+#container {
+  width: 100%;
+  height: 400px;
+  display: block;
+  margin: auto;
+  margin-top: 0;
+  padding-top: 0;
+}
+
+#header {
+  height: 400px;
+  width: 80%;
+  margin: auto;
+  margin-top: 0;
+  margin-bottom:0;
+  padding-top: 0;
+  padding-bottom: 0;
+}
+
+#aboutHeader {
+  font-size: 5em;
+  font-family: 'Reem Kufi', sans-serif;
+  color: black;
+  color: rgb(0, 0, 150);
+  font-weight: bold;
+  margin-bottom: -10px;
+}
+
+#resumeHeader {
+  font-size: 5em;
+  font-family: 'Reem Kufi', sans-serif;
+  color: rgb(0, 0, 0);
+  padding-left: 70px;
+  padding-bottom: 0px;
+  margin-bottom: -10px;
+
+}
+
+
+
+#myself {
+  color: rgb(0, 0, 150);
+  font-family: 'Libre Baskerville', serif;
+  margin-bottom: 0px;
+  padding: 0px 30px 50px;
+  border-bottom: 2px dashed rgb(0, 0, 150);
+  font-size: 1.2em;
+
+}
+
+#schoolList {
+  color: rgb(0, 0, 150);
+  font-family: 'Libre Baskerville', serif;
+padding: 0px 0px 200px 100px;
+}
+
+
+#diagram {
+
+  height: 100px;
+  width: 200px;
+}
+
+
+#firstLink {
+
+  border-right: 2px solid rgb(0, 0, 150);
+  padding-right: 10px;
+  margin-right: 5px;
+}
+
+
+
+#resumeNav {
+  padding-left: 100px;
+
+}
+
+#school {
+  font-weight: bold;
+  font-size: 1.2em;
+
+}
+
+#enjoy {
+  padding-left: 10px;
+
+
+}
+
+#copyright {
+  display: block;
+  margin-top: 350px;
+
+}
+
+.red {
+  background-color: red;
+}

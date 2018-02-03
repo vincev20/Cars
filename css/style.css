@@ -1,0 +1,382 @@
+h1 {
+    font-family: 'Fira Sans', sans-serif;
+    font-weight: bold;
+}
+
+.normal {
+  font-family: 'Fira Sans', sans-serif;
+  font-size: 28px;
+}
+
+.normalpic{
+  height: 600px;
+  width: 800px;
+}
+
+
+.normalpic2{
+  height: 530px;
+  width: 800px;
+}
+
+.normalpic3{
+  height: 530px;
+  width: 800px;
+}
+
+#title2 {
+  //margin: 0 auto;
+  //text-align: center;
+  text-align: center;
+}
+
+
+#iex1 {
+  // background-image: url('../images/iex1painters2.jpg');
+  background-repeat: no-repeat;
+
+  background-size: 100% 800px;
+  text-align: center;
+}
+
+#iex2 {
+  // background-image: url('../images/iex2glass.png');
+  background-repeat: no-repeat;
+
+  background-size: 100% 800px;
+}
+
+#iex3 {
+   //background-image: url('../images/iex3catmouse.png');
+  background-repeat: no-repeat;
+
+  background-size: 100% 800px;
+}
+
+#introBody{
+  background-color: white;
+}
+
+.otherBody{
+
+  background-color: #06040D;
+}
+
+.otherBody2{
+
+  background-color: #000000;
+}
+
+#bmenu {
+  border: none;
+  height: 80px;
+  width: 200px;
+  padding-left: 900px;
+}
+
+
+#bmenu2 {
+  border: none;
+  height: 80px;
+  width: 200px;
+  text-align: left;
+}
+
+.resizeBox {
+  //border: none;
+  height: 200px;
+  width: 200px;
+  display: inline;
+  margin-right: 150px;
+}
+
+.resizeButton {
+  border: none;
+  height: 80px;
+  width: 200px;
+    margin-left: 40px;
+}
+
+#cjourney{
+
+  height: 100px;
+  width: 400px;
+}
+
+#title {
+
+  height: 1000px;
+  width: 100%;
+  background-image: url('../images/title.png');
+  display: fixed;
+  background-repeat: no-repeat;
+  background-size: 100% 1000px;
+  //margin:;
+}
+
+
+
+#home {
+
+  margin-top: -17px;
+  height: 800px;
+  width: 100%;
+  background-image: url('../images/menu10.png');
+  display: fixed;
+  background-repeat: no-repeat;
+  background-size: 100% 800px;
+  //margin:;
+}
+
+
+#indirect {
+  position: absolute;
+    position: absolute;
+  height:140px; 
+  width:320px;
+   top: 120px;
+   left: 240px;
+}
+
+#oppositedirection {
+  position: absolute;
+  height:170px; 
+  width:470px;
+    top: 377px;
+    left: 70px;
+}
+
+
+#samedirection {
+  position: absolute;
+  height:180px; 
+  width:380px;
+   top: 600px;
+   left: 160px;
+}
+
+#introduction {
+  position: absolute;
+    height:80px; 
+  width:280px;
+  left:600px;
+  top:200px;
+}
+
+#rands {
+
+	position: absolute;
+    height:400px; 
+  width:360px;
+  left:550px;
+  top:280px;
+
+}
+
+#circular {
+  position: absolute;
+  height:140px; 
+  width:320px;
+  left:911px;
+  top: 140px;
+}
+
+#graphs {
+  position: absolute;
+  height:160px; 
+  width:430px;
+  left:921px;
+  top: 387px;
+}
+
+#exploration {
+  position: absolute;
+  height:170px; 
+  width:400px;
+  left:900px;
+  top: 591px;
+}
+
+.blink:hover {
+  opacity: .7;
+}
+
+
+
+#enter {
+  padding-top: 100px;
+  height:500px;
+  width: 880px;
+  border: none;
+}
+
+#enter:hover {
+  opacity: .7;
+}
+
+body {
+  background-color: #14102C;
+ // background-color: white;
+  //background-image: url("../images/wallpaper3.png");
+  display: fixed;
+  background-repeat: no-repeat;
+
+}
+
+
+
+#car1 {
+   height: 100px;
+   width: 100px;
+   position: absolute;
+     border-color: transparent;
+}
+
+
+#car2 {
+   height: 100px;
+   width: 100px;
+   position: absolute;
+     border-color: transparent;
+}
+
+
+#road2 {
+   height: 100px;
+   width: 1000px;
+   margin: 0 auto;
+   background-color: black;
+}
+
+
+
+ul {
+  padding: 0px 30px;
+}
+
+h2 {
+
+  font-style: italic;
+  border-bottom: 2px solid rgb(0, 0, 150);
+  padding: 0px 30px 15px 50px;
+  color: rgb(0, 0, 150);
+  font-family: 'Libre Baskerville', serif;
+  margin-bottom: 0px;
+
+}
+
+a {
+  color: rgb(0, 0, 150);
+  font-family: 'Libre Baskerville', serif;
+  margin-bottom: 0px;
+  text-decoration: none;
+
+}
+
+a:hover {
+  color: rgb(0, 0, 230);
+  font-weight: bold;
+
+}
+
+p {
+  color: rgb(0, 0, 150);
+  font-family: 'Libre Baskerville', serif;
+  margin-bottom: 0px;
+  padding: 0px 80px;
+
+}
+
+img {
+  display: block;
+  margin: auto;
+  width: 80%;
+  border: 1px solid black;
+
+}
+
+
+.imageParagraph {
+  padding-top: 10px;
+  border-bottom: 2px dashed rgb(0, 0, 150);
+  padding-bottom: 30px;
+  width: 80%;
+  margin: auto;
+}
+
+.imageTitle {
+  padding-top: 30px;
+  width: 80%;
+  margin: auto;
+  font-weight: bold;
+  font-size: 1.2em;
+}
+
+.schoolItem {
+  margin-bottom: 0px;
+  padding: 0px 0px 10px 30px;
+
+}
+
+.links {
+  display: inline;
+
+
+}
+
+.experience {
+  width: 87%;
+  margin: auto;
+  padding: 30px 30px 15px 10px;
+  
+}
+
+.experience2 {
+  height: 25px;
+  font-size: 25px;
+}
+
+
+
+#road {
+  padding-top: 325px;
+  height: 100px;
+  width: 1100px;
+  //background-color: red;
+  margin: 0 auto;
+  background-image: url("../images/box.jpg");
+
+}
+
+
+
+#header {
+  height: 400px;
+  width: 80%;
+  margin: auto;
+  margin-top: 0;
+  margin-bottom:0;
+  padding-top: 0;
+  padding-bottom: 0;
+}
+
+#aboutHeader {
+  font-size: 5em;
+  font-family: 'Reem Kufi', sans-serif;
+  color: black;
+  color: rgb(0, 0, 150);
+  font-weight: bold;
+  margin-bottom: -10px;
+}
+
+#resumeHeader {
+  font-size: 5em;
+  font-family: 'Reem Kufi', sans-serif;
+  color: rgb(0, 0, 150);
+  padding-left: 70px;
+  padding-bottom: 0px;
+  margin-bottom: -10px;
+
+}
+
+

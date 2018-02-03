@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Simulation 4.3</title>
+    
+    <link rel="stylesheet" href="css/style2.css">
+  </head>
+
+  <body>
+  	<div class="main">
+  		<h1>Simulation 4.3</h1>
+        
+        <div class="frame">
+        
+   	    <div id="road" class="sky">
+        		<!--<img class="town" src="newimages/downshot2.png">-->
+                
+                
+            	<img class="town" src="newimages/wall_skater3.jpg">
+                 <img id="skater2" src="newimages/skate-02.png"> 
+                <img id="skater1" src="newimages/skate-01.png">
+               
+            </div>
+      
+      	   <div class="inputs">
+        		<label>Time/Clock Counter:</label>
+				<input type="input" id="step" value="0" readonly><label>Hours</label>
+                 
+                   
+                  <div class="futuristic">
+                    <label>Speed of Rider 1 =</label>
+                    <input id="speed1" value="20">
+                    <label>km/h</label>
+                    </div>
+                  
+                  <div class="futuristic">
+                    <label>Speed of Rider 2 =</label>
+                    <input id="speed2" value="30">
+                    <label>km/h</label>
+                  </div>
+                  
+                  <div class="futuristic">  
+                    <label>Delay in start time of PEV2 = </label> 
+                    <input id="delay" value="0">
+                     
+                   </div>
+                  
+                   <div class="input">
+                                <label>Distance Between:</label>
+                                <input id="distanceBetween" class="blanks" value="0" readonly>
+                               
+				  </div>
+                  
+                  <div class="futuristic">  
+                   <!-- Delay in start time of PEV2 =  --> 
+                      <input type="hidden" id="delay" value="0"> 
+                   </div>  
+                   
+                   
+        </div>        
+                
+                 <div class="content">  
+                  
+                </div> 
+        </div>
+        
+        
+        
+        
+        
+        <div class="buttonBar firstBar">
+           <a id="backButton" class="button2" href="../same.html">
+           		<img src="images3/backButton.png">
+           </a>
+          
+         
+           <a id="homeButton" class="button2" href="../home.html">
+           		<img src="images3/homeButton.png">
+           </a>
+           
+       </div>
+        
+        <div class="buttonBar">
+           <a id="button3" class="button">
+           		Play
+           </a>
+           <a id="button4" class="button">
+           		Pause
+           </a>
+           <a id="button2" class="button">
+           		Rewind
+           </a>
+           <a id="button1" class="button">
+           		Forward
+           </a>
+           <a id="resetButton" class="button">
+           		Reset
+           </a>
+        
+        </div>
+        
+
+       
+       <div class="last">
+       </div>
+        
+  	</div>  
+    
+  
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/1.20.3/TweenMax.min.js"></script>
+    <script src="myscript.js"></script>
+  </body>
+	
+  
+</html>
