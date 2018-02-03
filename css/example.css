@@ -11,7 +11,11 @@ body {
 	background-repeat: no-repeat;
 }
 
-
+.mySlides {
+	margin: 0 auto;
+	width: 800px;
+	height: 400px;	
+}
 
 #titlePic {
   padding-top: 200px;
