@@ -70,6 +70,9 @@ var size = 100;
 
 var timer;
 
+
+$step.val(0)
+
 var i=0;
 
 var dps = []; // dataPoints
@@ -257,7 +260,6 @@ function distanceBetween2(){
 
 
 
-
 $("#button2").click(function(){
 
 //init();
@@ -275,7 +277,7 @@ var stepDown = 0;
     if (total1 > lowerLimit) {
       
       $("#car1").animate({ 
-        left: "-=" + (speed1 * scaleFactor * -1),
+        left: "+=" + (speed1 * scaleFactor * -1),
       }, 1000 );
 
       stepDown = stepDown + 1;
@@ -286,7 +288,7 @@ var stepDown = 0;
       var difference = lowerLimit - total1
 
       $("#car1").animate({ 
-        left: "-=" + ((speed1 * scaleFactor * -1) + difference),
+        left: "+=" + ((speed1 * scaleFactor * -1) + difference),
       }, 1000 );
       
       total1 = lowerLimit
@@ -314,7 +316,7 @@ var stepDown = 0;
     if (total2 > lowerLimit) {
       
       $("#car2").animate({ 
-        right: "-=" + (speed2 * scaleFactor * -1),
+        left: "+=" + (speed2 * scaleFactor * -1),
       }, 1000 );
 
       stepDown = stepDown + 1;
@@ -325,7 +327,7 @@ var stepDown = 0;
       var difference = lowerLimit - total2
 
       $("#car2").animate({ 
-        right: "-=" + ((speed2 * scaleFactor * -1) + difference),
+        left: "+=" + ((speed2 * scaleFactor * -1) + difference),
       }, 1000 );
       total2 = lowerLimit
       stepDown = stepDown + 1;
@@ -465,10 +467,17 @@ function forward(){
     }
   }
 
+  stepUp = 1;	
   if (stepUp > 0){
   $step.val(parseInt($step.val())+1);
   status = true;
   }
+	
+  var stepCount = parseInt($step.val())	
+	
+  if (stepCount> 23){
+	  status = false;
+  }		
 
   stepUp = 0;
 

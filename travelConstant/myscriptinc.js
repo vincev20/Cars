@@ -72,7 +72,7 @@ var size = 100;
 var timer;
 
 var i=0;
-
+$step.val(0)
 var dps = []; // dataPoints
 
 var xVal = 0;
@@ -473,11 +473,18 @@ function forward(){
     }
   }
 
+  stepUp = 1;
   if (stepUp > 0){
   $step.val(parseInt($step.val())+1);
   status = true;
   }
 
+  var stepCount = parseInt($step.val())	
+	
+  if (stepCount> 23){
+	  status = false;
+  }	
+	
   stepUp = 0;
 
   compute();

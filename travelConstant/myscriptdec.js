@@ -80,7 +80,7 @@ var dataLength = 5; // number of dataPoints visible at any point
 
 
 var $resetButton = $("#resetButton");
-
+$step.val(0)
 $resetButton.click(function(){
 
   location.reload()
@@ -474,14 +474,24 @@ function forward(){
       stepUp = stepUp + 1;
     }
   }
-
+	
+  stepUp = 1;
   if (stepUp > 0){
   $step.val(parseInt($step.val())+1);
   status = true;
   }
 
+  var stepCount = parseInt($step.val())	
+	
+  if (stepCount> 23){
+	  status = false;
+  }		
+
   stepUp = 0;
 
+	
+	
+	
   compute();
   distanceBetween2();
   

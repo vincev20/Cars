@@ -459,7 +459,7 @@ function distanceBetween3(){
   var answer = Math.ceil((biggest - smallest) / scaleFactor)
   //answer = answer 
 
-  distanceBetween.val(answer);
+  distanceBetween.text(answer);
 
 }
  

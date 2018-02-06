@@ -70,14 +70,14 @@ body {
     transform: translate(-50%, -50%);
 }
 
-#hand, #hand2 {
- 	width: 380px;
+#hand {
+ 	width: 390px;
 }
 
 
 
 #hand2 {
- 	//width: 330px;
+ 	width: 355px;
 }
 
 .redHighlight {
@@ -85,7 +85,7 @@ body {
 }
 
 .boats {
-	width:10%;
+	width:4%;
 	//height: 40px;
 	//width: 04px;
 

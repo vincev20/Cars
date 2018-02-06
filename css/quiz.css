@@ -218,15 +218,6 @@ h3 {
 	font-size: 28px;
 }
 
-.menuButton {
-	padding: 0 20px;
-	display: inline-block;
-	text-decoration: none;
-	color: white;
-	font-family: bebasCustom;
-	-webkit-text-stroke: 1.5px #1EAFDC;
-	font-size: 28px;
-}
 
 
 .buttonSpacer {
@@ -342,14 +333,16 @@ p {
 }
 
 .button3:hover {
-	background: white;
-	color: black;
+	background: red;
+	color: white;
+	border-color: #7a1414;
 }
 
 
 .button:hover {
-	background: white;
-	color: black;
+	background: red;
+	color: white;
+	border-color: #7a1414;
 }
 
 .buttonBar {
