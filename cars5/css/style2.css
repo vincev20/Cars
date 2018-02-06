@@ -30,6 +30,21 @@ body {
 	background-size:cover;
 }
 
+#firstTopButton{
+	margin-left: 30px;	
+}
+
+.topButton {
+	color:white;
+	-webkit-text-stroke: 0.5px white;
+}
+
+.topButton:hover {
+	background: red;
+	color: white;
+	border-color: #7a1414;
+}
+
 .firstBar {
 	margin-top:-90px;	
 }

@@ -14,6 +14,7 @@ var speed1 = $("#speed1").val();
 var speed2 = $("#speed2").val();
 var distance0 = $("#distance0").val(); 
 
+$step.val(0);
 
 var limit = 1000
 var lowerLimit = 0
@@ -38,6 +39,8 @@ var $resetButtonb = $("#resetButtonb");
 
 var speedUpForReset = 0
 hideBottom()
+
+var mode = false;
 
 //init();
 delay = 0
@@ -90,7 +93,7 @@ $step.change(function(){
 	executeRev();
 	
 	for (i=0;i<steps; i++){
-		forward();
+		forwardByStep();
 		
 	}
 	speedUpForReset = 0;
@@ -184,6 +187,7 @@ function hideTop(){
 	$road1.hide();
 	
 	console.log("Here");
+	mode = true;
 }
 
 function hideBottom(){
@@ -191,6 +195,7 @@ function hideBottom(){
 	//$road2.show();
 	$road2.hide();
 	console.log("Here2");
+	mode = false;
 }
 
 
@@ -376,8 +381,14 @@ function playSound(){
  
 function distanceBetween3(){
 
+  if (mode){
+    var biggest = Math.max(car3.total*10,car4.total*10)
+  var smallest = Math.min(car3.total*10,car4.total*10) 
+	  
+  }else{ 
   var biggest = Math.max(car1.total,car2.total,car3.total,car4.total)
   var smallest = Math.min(car1.total,car2.total,car3.total,car4.total)
+  }
   //biggest = biggest * scaleFactor
   //smallest = smallest * scaleFactor
 
@@ -639,6 +650,81 @@ function forward(){
 
 }
 
+
+function forwardByStep(){
+  calcLimit()
+  var status = false;
+  var stepUp = 0;
+  
+  //var indicator = checkSpeed()
+
+    var first = move(car1)
+    var second = move(car2)
+    
+	var third = move(car3)
+    var fourth = move(car4)
+	var items = []
+	
+	//CHECK IF AT LEAST 1 MOVES
+
+    if (first){
+      stepUp += 1
+	  items.push(first)
+    }
+    if (second){
+      stepUp += 1
+	  items.push(second)
+    }
+	if (third){
+      stepUp += 1
+	  items.push(third)
+    }
+    if (fourth){
+      stepUp += 1
+	  items.push(fourth)
+    }
+	
+	//COMBINE ALL THAT MOVES
+
+	/*
+    if (stepUp == 2 ){
+      tl.add(combine(first,second))
+    }
+	*/
+	
+	if (stepUp > 1 ){
+      tl.add(combine(items))
+    }
+
+	//FOR 1 MOVE CASE
+
+    if (stepUp == 1){
+        if (first){
+          tl.add(first)
+        }
+        if (second){
+          tl.add(second)
+        }
+		if (third){
+          tl.add(third)
+        }
+		if (fourth){
+          tl.add(fourth)
+        }
+    }
+  
+  if (stepUp > 0){
+    
+    //$step.val(parseInt($step.val())+1);
+    status = true;
+    
+  }
+
+  stepUp = 0;
+  return status;
+
+
+}
 
 
 function forwardInverted(){
