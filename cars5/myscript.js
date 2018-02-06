@@ -15,7 +15,7 @@ var speed2 = $("#speed2").val();
 var distance0 = $("#distance0").val(); 
 
 $step.val(0);
-
+$("#distance0").val(0)
 var limit = 1000
 var lowerLimit = 0
 var scaleFactor = 10
@@ -47,7 +47,7 @@ delay = 0
 speed1 = 20
 speed2 = 30
 distance0 = 0
- 
+//init()
 //FORWARD INV 20 80 OK -- 2-1 2-1 1-2
 
 var $ispeed1 = $("#speed1"); 
@@ -169,9 +169,9 @@ $("#button4b").click(function(){
 
 $resetButton.click(function(){
   //RESET
-  speedUpForReset = 1;
-  executeRev()
-  init()    
+	
+	location.reload()
+     
 });
 
 
@@ -300,6 +300,18 @@ function move2(obj){
 
 }  
 
+function move3(obj){
+   
+    if (obj.total >= limit) {
+
+    } else { 
+
+      obj.total += (distance0 * scaleFactor)/10;
+      return forwardStep(obj.pointer,(distance0 * scaleFactor)/10)
+
+    }
+
+} 
 
 
 function execute(){
@@ -770,6 +782,13 @@ function forwardInverted(){
 
 function init(){
   calcLimit()
+	
+  if (distance0 > 80){
+	  
+	  distance0 = 80;
+	  
+  }	
+	
   if (car2.total >= limit) {
 
 
@@ -777,7 +796,7 @@ function init(){
 
     //executeRev()
     tl.add(move2(car2))
-	tl.add(move2(car4))
+	tl.add(move3(car4))
     
 
   }

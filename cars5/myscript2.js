@@ -78,7 +78,7 @@ $idelay.change(function(){
 $idistance0.change(function(){
 
   distance0 = parseInt($("#distance0").val()); 
-  init();
+  init2();
 
   //console.log("Here")
 
@@ -339,6 +339,10 @@ function moveBack2(obj){
 
 function move2(obj){
    
+	if (distance0 > 87){
+		distance0 = 87;
+	}
+	
     if (obj.total >= limit) {
 
     } else { 
@@ -356,12 +360,25 @@ function move3(obj){
 
     } else { 
 
-      obj.total += distance0 * scaleFactor;
+      obj.total += (distance0 * scaleFactor)/10;
       return forwardStepFast(obj.pointer,((distance0 * scaleFactor)/10))
 
     }
 
 }  
+
+function move4(obj){
+   
+    if (obj.total >= limit) {
+
+    } else { 
+
+      obj.total = 0;
+      return backwardStepFast(obj.pointer,((distance0 * scaleFactor)/10))
+
+    }
+
+} 
 
 
 function execute(){
@@ -426,12 +443,21 @@ function forwardStep(obj,speed){
 
 }
 
+
 function forwardStepFast(obj,speed){
       
       return TweenMax.to(obj,0,{ x: "+=" + speed, onUpdate:distanceBetween3, ease: Linear.easeNone})
  
 
 }
+
+function backwardStepFast(obj,speed){
+      
+      return TweenMax.to(obj,0,{ x: 0, ease: Linear.easeNone})
+ 
+
+}
+
 
 function playSound(){
 	var audioElement = document.createElement('audio');
@@ -808,7 +834,7 @@ function forwardInverted(){
   var second = moveBack(car2)
   
   var third = move(car3)
-  var fourth = moveBack2(car4)
+  var fourth = moveBack(car4)
   var items = []
   
     //CHECK IF AT LEAST 1 MOVES
@@ -949,12 +975,52 @@ function forwardInvByStep(){
 
 function init(){
   calcLimit()
+
+			
+  if (distance0 > 87){
+	  
+	  distance0 = 87;
+	  
+  }	
+	
   if (car2.total >= limit) {
 
 
   } else { 
 
     //executeRev()
+    tl.add(move2(car2))
+	tl.add(move3(car4))
+    
+
+  }
+}
+
+
+
+function init2(){
+  
+  calcLimit()
+
+			
+  if (distance0 > 87){
+	  
+	  distance0 = 87;
+	  
+  }	
+	
+  if (car2.total >= limit) {
+
+
+  } else { 
+
+    //executeRev()
+	 
+	tl.add(move4(car2))
+	tl.add(move4(car4))
+    
+	  
+	  
     tl.add(move2(car2))
 	tl.add(move3(car4))
     
