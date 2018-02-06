@@ -39,8 +39,8 @@ var s1s2 = s1 + s2
 
 answer = (d0 + ( s2 * t2 ) ) / (s1 + s2)
 //var answer = (d0 + s2t2) / s1s2  
-answer = Math.ceil(answer)
-
+//answer = Math.ceil(answer)
+answer = +(answer.toFixed(2))
 yourAnswer = $("#final").val()
 
 if (yourAnswer == answer ){

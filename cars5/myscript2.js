@@ -77,7 +77,7 @@ $idistance0.change(function(){
 var car1 = {speed:speed1,total:total1,delay:0,pointer:$car1,sequence:1}
 var car2 = {speed:speed2,total:total2,delay:delay,pointer:$car2,sequence:2}
  
-init();
+
 
 $("#button1").click(function(){
   //FORWARD
@@ -155,7 +155,7 @@ $resetButtonb.click(function(){
   //init()  
 });
 
-
+init();
 
 function move(obj){
 
@@ -608,6 +608,19 @@ function calcLimit(input){
   
   var roadLength = document.getElementById('road').offsetWidth;
   var car2length = document.getElementById('car2').offsetWidth;
+  
+  if (roadLength){
+	  
+  }else {
+	  var roadLength = document.getElementById('road').offsetWidth;
+  }
+  
+  if (car2length){
+  
+  }else{
+	  	var car2length = document.getElementById('car1').offsetWidth;
+  }
+  
   scaleFactor = Math.floor(roadLength / 100)
   roadLength = roadLength - car2length
 

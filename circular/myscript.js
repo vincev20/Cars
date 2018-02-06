@@ -79,6 +79,8 @@ var dspeed2 = totDegrees / mfactor2
 var mfactor3 = distance0 / space
 var dspeed3 = totDegrees / mfactor3
 
+var hand1Total = 0;
+var hand2Total = 0;
 
 speed1 = dspeed1
 //console.log(sp)
@@ -86,7 +88,7 @@ speed1 = dspeed1
 speed2 = dspeed2
 
 
-console.log(speed1 + " " + speed2 + " " + mfactor1 + " " + mfactor2 + " " + space + " " + distance0)
+//console.log(speed1 + " " + speed2 + " " + mfactor1 + " " + mfactor2 + " " + space + " " + distance0)
 
 var tl = new TimelineMax({ repeat: 0, repeatDelay: 0, delay: 0 });
 
@@ -95,7 +97,7 @@ var $preset = $("#preset");
 
 $preset.change(function(){
 
-  console.log($preset.val())
+  //console.log($preset.val())
 
   var option = parseInt($preset.val())
   //var steps = parseInt($step.val())
@@ -134,10 +136,17 @@ $preset.change(function(){
 
 
 function forw(){
+   //console.log(speed1)
    tl.to($hand,1,{ directionalRotation: "+=" + speed1 +  "_cw", ease: Linear.easeNone})
    tl.to($hand2,1,{ directionalRotation: "-=" + speed2 +  "_ccw", ease: Linear.easeNone},"-=1")
    add20()
    add202()
+    hand1Total += speed1;
+   hand2Total += speed2;
+   console.log(hand1Total % 360)
+   console.log(hand2Total % 360)
+   
+   
 }
 
 function backw(){
@@ -145,6 +154,10 @@ function backw(){
    tl.to($hand2,1,{ directionalRotation: "+=" + speed2 +  "_cw", ease: Linear.easeNone},"-=1")
    dec20()
    dec202()
+    hand1Total -= speed1;
+   hand2Total -= speed2;
+   console.log(hand1Total % 360)
+   console.log(hand2Total % 360)
   
 }
 
@@ -173,7 +186,7 @@ $speed1Input.change(function(){
   //dspeed2 = totDegrees / mfactor2
   speed1 = dspeed1
 
-  console.log(speed1 + " " + speed2 + " " + mfactor1 + " " + mfactor2 + " " + space + " " + distance0)
+  //console.log(speed1 + " " + speed2 + " " + mfactor1 + " " + mfactor2 + " " + space + " " + distance0)
 
 });
 
@@ -187,7 +200,7 @@ $speed2Input.change(function(){
 //speed1 = dspeed1
 //console.log(sp)
 speed2 = dspeed2
-   console.log(speed1 + " " + speed2 + " " + mfactor1 + " " + mfactor2 + " " + space + " " + distance0)
+   //console.log(speed1 + " " + speed2 + " " + mfactor1 + " " + mfactor2 + " " + space + " " + distance0)
 });
 
 $lengthInput.change(function(){
@@ -281,7 +294,7 @@ function updateHandler() {
   var term3 = distance0 - (term2 % distance0 )
 
   var distBetween = Math.min(term2,term3)
-  console.log(spd1c,spd2c,term1,term2,term3,distBetween)
+  //console.log(spd1c,spd2c,term1,term2,term3,distBetween)
 
   //distBetween = 1
   //console.log(spd1c,spd2c,term1,term2,term3,distBetween)
@@ -441,8 +454,15 @@ $button11.click(function(){
 
 function sfor(){
 
+   //console.log(speed1)
    tl.to($hand,1,{ directionalRotation: "+=" + speed1 +  "_cw", ease: Linear.easeNone})
    tl.to($hand2,1,{ directionalRotation: "-=" + speed2 +  "_ccw", ease: Linear.easeNone},"-=1")
+   
+   
+   hand1Total += speed1;
+   hand2Total += speed2;
+   console.log(hand1Total % 360)
+   console.log(hand2Total % 360)
    add20()
    add202()
    //sfor()

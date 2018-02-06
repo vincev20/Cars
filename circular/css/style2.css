@@ -317,8 +317,9 @@ label {
 }
 
 .button:hover {
-	background: white;
-	color: black;
+	background: red;
+	color: white;
+	border-color: #7a1414;
 }
 
 .buttonBar {

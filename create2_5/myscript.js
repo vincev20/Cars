@@ -29,20 +29,37 @@ var t1 = $("#third").val()
 var p2 = $("#fourth").val()
 var t2 = $("#fifth").val()
 
-var p2t1 = p2 * t1
-var p1t2 = p1 + t2
+var $first = $("#first")
+var $second = $("#second")
+var $third = $("#third")
+var $fourth = $("#fourth")
+var $fifth = $("#fifth")
+var $fields = $(".fields")
 
+ 
+
+
+var p2t1 = p2 * t1
+var p1t2 = p1 * t2
 var rightTerm = p2t1 / p1t2
+
+
+
+
 
 answer = m1 * rightTerm
 //var answer = (d0 + s2t2) / s1s2  
-answer = Math.ceil(answer)
+//answer = Math.ceil(answer)
 
+answer = +(answer.toFixed(2))
+//answer = answer
 
 //$final.prop('disabled', true);
 yourAnswer = $("#final").val()
 
 //document.getElementById("final").disabled = true; 
+
+
 
 
 if( yourAnswer ) {
