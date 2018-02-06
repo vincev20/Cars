@@ -4,75 +4,64 @@
     <meta charset="utf-8">
     <title>Exploration - Opposite Directions</title>
     <!--<link rel="stylesheet" href="css/normalize.css">-->
-    <link rel="stylesheet" href="css/styleopp.css">
+    <link rel="stylesheet" href="css/style2.css">
   </head>
 
   <body>
   	<div class="main">
   		<h1>Exploration - Opposite Directions
-			 <a id="firstTopButton" class="topButton" >
+           <a id="firstTopButton" class="topButton" >
            		Opposite
            </a>
            <a id="button4b" class="topButton" href="explorationsame.html">
            		Same
            </a>
-		</h1>
+        </h1>
         
         <div class="frame">
         
-   	    <div id="road1" class="sky">
+   	    <div id="road" class="sky">
             	<img class="town" src="newimages/city-full.jpg">
-                 <img id="skater2" src="newimages/car-02-3.png"> 
-                <img id="skater1" src="newimages/car-01-2.png">
+                 <img id="car2" src="newimages/car-02-3.png"> 
+                <img id="car1" src="newimages/car-01-2.png">
                
             </div>
       
-		   <div id="road2" class="sky">
-        		<!--<img class="town" src="newimages/downshot2.png">-->
-                
-                
-            	<img class="town" src="newimages/side.jpg">
-                 <img id="skater3" src="newimages/car-01-2.png"> 
-                <img id="skater4" src="newimages/car-02-3.png">
-               
-            </div>	
-			
       	   <div class="inputs">
-        		 <label>Time/Clock Counter:</label>
+        		<label>Time/Clock Counter:</label>
 				<input type="input" id="step" value="0" readonly><label>Hours</label>
-                 &nbsp;
-                 <label>Distance Between:</label>
-                                <span id="distanceBetween" class="blanks">0</span> 
+                   <label>Distance Between:</label>
+                                <input id="distanceBetween" class="blanks" value="0" readonly>
                    
                   <div class="futuristic">
    					
 
-                    <label>Speed of CAR 1 =</label> 
+                    <label>Speed of PEV 1 =</label> 
                     	<input id="speed1" value="20">
                     <label>km/h</label>
                     </div>
                   
                   <div class="futuristic">
                      
-                    <label>Speed of CAR 2 =</label>
+                    <label>Speed of PEV 2 =</label> 
                     <input id="speed2" value="30">
                     <label>km/h</label>
                   </div>
                   
                     <div class="futuristic">  
-                    <label>Initial Distance between the 2 CARs =</label> 
+                    <label>Initial Distance between the 2 PEVs =</label> 
                     <input id="distance0" value="100">
                     <label>km</label>
                    </div>
                   
                   <div class="futuristic">  
-                    <label>Delay in start time of CAR 2=</label> 
+                    <label>Delay in start time of PEV2 =</label> 
                
                     <input type="input" id="delay" value="0"> 
                    </div>
                   
                    <div class="input">
-                               
+                              
                                
 				  </div>
                   
@@ -92,8 +81,10 @@
         
         
         
-        <div class="buttonBar">
-           <a id="backButton" class="button2" href="../opposite.html">
+        <div class="buttonBar secondBar">
+          
+         
+           <a id="backButton" class="button2" href="../home.html">
            		<img src="images3/backButton.png">
            </a>
           
@@ -103,8 +94,8 @@
            </a>
            
        </div>
-      
-        <div class="buttonBar">
+        
+         <div class="buttonBar ">
            <a id="button3b" class="button">
            		Play
            </a>
@@ -120,9 +111,11 @@
            <a id="resetButtonb" class="button">
            		Reset
            </a>
-        
+         
         </div>
         
+        
+       
         
 
        
