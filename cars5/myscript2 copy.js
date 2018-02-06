@@ -5,8 +5,6 @@ var tl = new TimelineMax({ repeat: 0, repeatDelay: 0, delay: 0 });
 //function init(){
 var total1 = 0;
 var total2 = 0;
-var total3 = 0;
-var total4 = 0;
 
 var delay = $("#delay").val();
 var $step = $("#step");
@@ -14,7 +12,6 @@ var speed1 = $("#speed1").val();
 var speed2 = $("#speed2").val();
 var distance0 = $("#distance0").val(); 
 
-$step.val(0);
 
 var limit = 1000
 var lowerLimit = 0
@@ -25,28 +22,20 @@ var distanceBetween = $("#distanceBetween");
 
 var timer;
 
-var $car1 = $("#skater1");
-var $car2 = $("#skater2");
-var $car3 = $("#skater3");
-var $car4 = $("#skater4");
-
-var $road1 = $("#road1");
-var $road2 = $("#road2");
-
+var $car1 = $("#car1");
+var $car2 = $("#car2");
 
 var $resetButton = $("#resetButton");
 var $resetButtonb = $("#resetButtonb");
 
 var speedUpForReset = 0
-hideBottom()
 
-var mode = false;
 
 //init();
 delay = 0
 speed1 = 20
 speed2 = 30
-distance0 = 87
+distance0 = 100
  
 //FORWARD INV 20 80 OK -- 2-1 2-1 1-2
 
@@ -57,22 +46,20 @@ var $idelay = $("#delay");
 
 $ispeed1.change(function(){
   speed1 = parseInt($("#speed1").val()); 
-  car1.speed = speed1  
-  car3.speed = speed1/10    
+  car1.speed = speed1    
 
 });
 
 $ispeed2.change(function(){
   speed2 = parseInt($("#speed2").val());
   car2.speed = speed2
-  car4.speed = speed2/10
 
 });
 
 $idelay.change(function(){
   delay = $("#delay").val();
   car2.delay = delay
-  car4.delay = delay
+
 });
 
 $idistance0.change(function(){
@@ -85,30 +72,12 @@ $idistance0.change(function(){
 });
 
 
-$step.change(function(){
-	
-	var steps = parseInt($step.val());
-	console.log(steps)
-	speedUpForReset = 1;
-	executeRev();
-	
-	for (i=0;i<steps; i++){
-		forwardByStep();
-		
-	}
-	speedUpForReset = 0;
-	
-});
 
-var car1 = {speed:speed1,total:total1,delay:0,pointer:$car1}
-var car2 = {speed:speed2,total:total2,delay:delay,pointer:$car2}
+
+var car1 = {speed:speed1,total:total1,delay:0,pointer:$car1,sequence:1}
+var car2 = {speed:speed2,total:total2,delay:delay,pointer:$car2,sequence:2}
  
-var car3 = {speed:speed1/10,total:total3,delay:0,pointer:$car3}
-var car4 = {speed:speed2/10,total:total4,delay:delay,pointer:$car4}
 
-var sound = false;
-
-init()
 
 $("#button1").click(function(){
   //FORWARD
@@ -120,6 +89,7 @@ $("#button1").click(function(){
 $("#button1b").click(function(){
  
   //forward();
+  speedUpForReset = 0;
   forwardInverted();
 
 });
@@ -127,13 +97,13 @@ $("#button1b").click(function(){
 $("#button2").click(function(){
   //REWIND
   speedUpForReset = 0;
-   backward()
-  //executeRev();
+  backward()
+ 
 
 });
 
 $("#button2b").click(function(){
-
+  speedUpForReset = 0;
   backwardInverted()
  
 
@@ -144,12 +114,13 @@ $("#button2b").click(function(){
 $("#button3").click(function(){
   //PLAY
   //preventDefault();
+  speedUpForReset = 0;
   execute();
 
 });
 
 $("#button3b").click(function(){
-  
+  speedUpForReset = 0;
   executeInverted();
 
 });
@@ -157,13 +128,14 @@ $("#button3b").click(function(){
 
 
 $("#button4").click(function(){
-
+  speedUpForReset = 0;
   clearTimeout(timer);
 
 });
 
 $("#button4b").click(function(){
-
+  
+  speedUpForReset = 0;
   clearTimeout(timer);
 
 });
@@ -171,7 +143,6 @@ $("#button4b").click(function(){
 
 $resetButton.click(function(){
   //RESET
-	
   speedUpForReset = 1;
   executeRev()
   init()    
@@ -179,28 +150,12 @@ $resetButton.click(function(){
 
 
 $resetButtonb.click(function(){
-location.reload()
-  executeRev()
-  init()  
+  speedUpForReset = 0;
+  executeRevInvertedReset()
+  //init()  
 });
 
-
-function hideTop(){
-	$road2.show();
-	$road1.hide();
-	
-	console.log("Here");
-	mode = true;
-}
-
-function hideBottom(){
-	$road1.show();
-	//$road2.show();
-	$road2.hide();
-	console.log("Here2");
-	mode = false;
-}
-
+init();
 
 function move(obj){
 
@@ -210,8 +165,8 @@ function move(obj){
 
       if (obj.delay > 0) {
         obj.delay = obj.delay - 1 
-  
-		return forwardStep(obj.pointer,0)
+  		return forwardStep(obj.pointer,0)
+
       }else{
 
         obj.total += obj.speed * scaleFactor;
@@ -221,11 +176,9 @@ function move(obj){
             //EXCEED CASE
             var difference = obj.total - limit
             obj.total = limit;
-			hideTop()
             return forwardStep(obj.pointer,((obj.speed * scaleFactor) - difference))
-            //HIDE TOP
-          	
-		  
+            
+          
         }else{
           
             return forwardStep(obj.pointer,(obj.speed * scaleFactor))
@@ -239,9 +192,86 @@ function move(obj){
 
 }  
 
+function moveReset(obj){
+
+  if (obj.total >= limit) {
+
+    } else { 
+
+      if (obj.delay > 0) {
+        obj.delay = obj.delay - 1 
+  
+
+      }else{
+
+        obj.total += obj.speed * scaleFactor;
+
+        if (obj.total >= limit) {
+
+            //EXCEED CASE
+            var difference = obj.total - limit
+            obj.total = limit;
+            return forwardStepReset(obj.pointer,((obj.speed * scaleFactor) - difference))
+            
+          
+        }else{
+          
+            return forwardStepReset(obj.pointer,(obj.speed * scaleFactor))
+            
+        }
+
+         
+      }
+  }
+
+
+} 
 
 
 function moveBack(obj){
+ 
+
+  if (obj.total == lowerLimit){
+
+  } else if (obj.total < lowerLimit) {
+ 
+
+  } else {  
+
+
+    if (obj.delay > 0) {
+        obj.delay = obj.delay - 1 
+
+ 		return backwardStep(obj.pointer,0)
+
+    }else{
+
+
+        obj.total -=  (obj.speed * scaleFactor);
+
+
+        if (obj.total > lowerLimit) {
+          
+         
+          return backwardStep(obj.pointer,(obj.speed * scaleFactor * -1))
+          
+        } else {
+
+          
+          var difference = lowerLimit - obj.total
+          obj.total = lowerLimit
+          
+          return backwardStep(obj.pointer,((obj.speed * scaleFactor * -1) + difference))
+         
+
+        }
+
+    }
+  }
+
+}
+
+function moveBackReset(obj){
  
 
   if (obj.total == lowerLimit){
@@ -262,71 +292,19 @@ function moveBack(obj){
 
         obj.total -=  (obj.speed * scaleFactor);
 
-	    if (obj.total > lowerLimit) {
-    	  //NORMAL CASE      
-          if (obj.total < (limit * 0.02) ){
-			  hideBottom()
-		  }	
-		 
-          return backwardStep(obj.pointer,(obj.speed * scaleFactor * -1))
-          
-        } else {
-		  //EXCEED CASE
 
-		 
+        if (obj.total > lowerLimit) {
           
-          var difference = lowerLimit - obj.total
-          obj.total = lowerLimit
-          
-          return backwardStep(obj.pointer,((obj.speed * scaleFactor * -1) + difference))
          
-
-        }
-
-    }
-  }
-
-}
-
-
-function moveBack2(obj){
-  console.log("total" + obj.total);
-
-  if (obj.total == lowerLimit){
-
-  } else if (obj.total < lowerLimit) {
- 
-
-  } else {  
-
-
-    if (obj.delay > 0) {
-        obj.delay = obj.delay - 1 
-
- 
-
-    }else{
-
-
-        obj.total -=  (obj.speed * scaleFactor)* 10;
-
-	    if (obj.total > lowerLimit) {
-    	  //NORMAL CASE      
-          if (obj.total < (limit * 0.02) ){
-			  hideBottom()
-		  }	
-		 
-          return backwardStep(obj.pointer,(obj.speed * scaleFactor * -1) )
+          return backwardStepReset(obj.pointer,(obj.speed * scaleFactor * -1))
           
         } else {
-		  //EXCEED CASE
 
-		 
           
           var difference = lowerLimit - obj.total
           obj.total = lowerLimit
           
-          return backwardStep(obj.pointer,((obj.speed * scaleFactor * -1) + difference))
+          return backwardStepReset(obj.pointer,((obj.speed * scaleFactor * -1) + difference))
          
 
         }
@@ -343,25 +321,23 @@ function move2(obj){
 
     } else { 
 
-      obj.total += distance0 * scaleFactor;
-      return forwardStepFast(obj.pointer,(distance0 * scaleFactor))
+	  obj.total += distance0 * scaleFactor;
+	  if (obj.total >= limit) {
 
+            //EXCEED CASE
+            var difference = obj.total - limit
+          	difference += 8
+		    obj.total = limit;
+            return forwardStepFast(obj.pointer,((distance0 * scaleFactor) - difference))
+	  }else {
+
+      	
+      	return forwardStepFast(obj.pointer,(distance0 * scaleFactor))
+	  }
     }
 
 }  
 
-function move3(obj){
-   
-    if (obj.total >= limit) {
-
-    } else { 
-
-      obj.total += distance0 * scaleFactor;
-      return forwardStepFast(obj.pointer,((distance0 * scaleFactor)/10))
-
-    }
-
-}  
 
 
 function execute(){
@@ -405,6 +381,15 @@ function executeRevInverted(){
       }, 1000);
 }
 
+function executeRevInvertedReset(){
+      timer = setTimeout(function () {
+    
+        if ( backwardInvertedReset() == true){
+        //if ( forwardInverted() == true){
+          executeRevInvertedReset();
+        }
+      }, 0);
+}
 
 
 
@@ -418,46 +403,56 @@ function backwardStep(obj,speed){
 	  }
 }
  
+function backwardStepReset(obj,speed){
+
+	  if (speedUpForReset == 1){
+		  return TweenMax.to(obj,0,{ x: "+=" + speed, onUpdate:distanceBetween3, ease: Linear.easeNone})
+	  }else {
+      
+      return TweenMax.to(obj,0,{ x: "+=" + speed, onUpdate:distanceBetween3, ease: Linear.easeNone})
+	  }
+} 
 
 function forwardStep(obj,speed){
       
-      return TweenMax.to(obj,1,{ x: "+=" + speed, onUpdate:distanceBetween3, ease: Linear.easeNone})
- 
+	  if (speedUpForReset == 1){
+	  	return TweenMax.to(obj,0,{ x: "+=" + speed, onUpdate:distanceBetween3, ease: Linear.easeNone})
+	 
+	  }else{
+	  	return TweenMax.to(obj,1,{ x: "+=" + speed, onUpdate:distanceBetween3, ease: Linear.easeNone})
+	  }
 
 }
+
 
 function forwardStepFast(obj,speed){
       
-      return TweenMax.to(obj,0,{ x: "+=" + speed, onUpdate:distanceBetween3, ease: Linear.easeNone})
- 
+	  if (speedUpForReset == 1){
+	  	return TweenMax.to(obj,0,{ x: "+=" + speed, onUpdate:distanceBetween3, ease: Linear.easeNone})
+	 
+	  }else{
+	  	return TweenMax.to(obj,0,{ x: "+=" + speed, onUpdate:distanceBetween3, ease: Linear.easeNone})
+	  }
 
 }
 
-function playSound(){
-	var audioElement = document.createElement('audio');
-    audioElement.setAttribute('src', 'audio/boros.mp3');
-	
-	if (!sound){
-	audioElement.play(1)
-	sound = true;
-		setInterval(function(){
-			audioElement.pause();
-			
-		},3000);
-	
-	}
+
+function forwardStepReset(obj,speed){
+      
+	  if (speedUpForReset == 1){
+	  	return TweenMax.to(obj,0,{ x: "+=" + speed, onUpdate:distanceBetween3, ease: Linear.easeNone})
+	 
+	  }else{
+	  	return TweenMax.to(obj,0,{ x: "+=" + speed, onUpdate:distanceBetween3, ease: Linear.easeNone})
+	  }
+
 }
+
  
 function distanceBetween3(){
 
-  if (mode){
-    var biggest = Math.max(car3.total*10,car4.total*10)
-  var smallest = Math.min(car3.total*10,car4.total*10) 
-	  
-  }else{ 
-  var biggest = Math.max(car1.total,car2.total,car3.total,car4.total)
-  var smallest = Math.min(car1.total,car2.total,car3.total,car4.total)
-  }
+  var biggest = Math.max(car1.total,car2.total)
+  var smallest = Math.min(car1.total,car2.total)
   //biggest = biggest * scaleFactor
   //smallest = smallest * scaleFactor
 
@@ -465,9 +460,7 @@ function distanceBetween3(){
   //answer = answer 
 
   distanceBetween.text(answer);
-   if (answer == 0){
-   	playSound()
-   }
+
 }
  
 
@@ -478,29 +471,17 @@ function backward(){
 
     var first = moveBack(car1)
     var second = moveBack(car2)
-	var third = moveBack(car3)
-    var fourth = moveBack(car4)
-	var items = [];
+
 
     if (first){
       stepDown += 1
-	  items.push(first)
     }
     if (second){
       stepDown += 1
-	  items.push(second)
-    }
-	if (third){
-      stepDown += 1
-	  items.push(third)
-    }
-    if (fourth){
-      stepDown += 1
-	  items.push(fourth)
     }
 
-    if (stepDown > 2 ){
-      tl.add(combine(items))
+    if (stepDown == 2 ){
+      tl.add(combine(first,second))
     }
 
     if (stepDown == 1){
@@ -509,12 +490,6 @@ function backward(){
         }
         if (second){
           tl.add(second)
-        }
-		if (third){
-          tl.add(third)
-        }
-		if (fourth){
-          tl.add(fourth)
         }
     }
 
@@ -546,29 +521,16 @@ function backwardInverted(){
     var first = moveBack(car1)
     var second = move(car2)
 
-	var third = moveBack(car3)
-    var fourth = move(car4)
-	var items = [];
- 		
+
     if (first){
       stepDown += 1
-	  items.push(first)
     }
     if (second){
       stepDown += 1
-	  items.push(second)
-    }
-	if (third){
-      stepDown += 1
-	  items.push(third)
-    }
-    if (fourth){
-      stepDown += 1
-	  items.push(fourth)
     }
 
     if (stepDown == 2 ){
-      tl.add(combine(items))
+      tl.add(combine(first,second))
     }
 
     if (stepDown == 1){
@@ -578,11 +540,43 @@ function backwardInverted(){
         if (second){
           tl.add(second)
         }
-		if (third){
-          tl.add(third)
+    }
+
+ 
+    if (stepDown > 0){
+
+      $step.val(parseInt($step.val())-1);
+      status = true;
+    }
+    stepDown = 0;
+    return status;
+}
+
+function backwardInvertedReset(){
+    calcLimit()
+    var status = false;
+    var stepDown = 0;
+    var first = moveBackReset(car1)
+    var second = moveReset(car2)
+
+
+    if (first){
+      stepDown += 1
+    }
+    if (second){
+      stepDown += 1
+    }
+
+    if (stepDown == 2 ){
+      tl.add(combine(first,second))
+    }
+
+    if (stepDown == 1){
+        if (first){
+          tl.add(first)
         }
-		if (fourth){
-          tl.add(fourth)
+        if (second){
+          tl.add(second)
         }
     }
 
@@ -590,7 +584,7 @@ function backwardInverted(){
     if (stepDown > 0){
 
       $step.val(parseInt($step.val())-1);
-      status = true
+      status = true;
     }
     stepDown = 0;
     return status;
@@ -600,42 +594,33 @@ function backwardInverted(){
 
 
 
-function combine(items){
+function combine(first,second){
 
       //var test3
         var tl2 = new TimelineMax()
-        tl2.add("step")
-		
-		items.forEach(function(item){
-		   tl2.add(item,"step")
-        //tl2.add(second,"step") 
-		//tl2.add(third,"step")
-        //tl2.add(fourth,"step")
-		
-		});
-         
+        tl2.add("step")   
+        tl2.add(first,"step")
+        tl2.add(second,"step")   
         return tl2
 }
 
 function calcLimit(input){
   
-  var roadLength = document.getElementById('road1').offsetWidth;
-  var car2length = document.getElementById('skater2').offsetWidth;
+  var roadLength = document.getElementById('road').offsetWidth;
+  var car2length = document.getElementById('car2').offsetWidth;
   
   if (roadLength){
 	  
-  }else{
- 
- 	  roadLength = document.getElementById('road2').offsetWidth;
+  }else {
+	  var roadLength = document.getElementById('road').offsetWidth;
   }
   
   if (car2length){
-	  
+  
   }else{
- 
- 	  car2length = document.getElementById('skater4').offsetWidth;
+	  	var car2length = document.getElementById('car1').offsetWidth;
   }
-   
+  
   scaleFactor = Math.floor(roadLength / 100)
   roadLength = roadLength - car2length
 
@@ -657,42 +642,17 @@ function forward(){
     var first = move(car1)
     var second = move(car2)
     
-	var third = move(car3)
-    var fourth = move(car4)
-	var items = []
-	
-	//CHECK IF AT LEAST 1 MOVES
 
     if (first){
       stepUp += 1
-	  items.push(first)
     }
     if (second){
       stepUp += 1
-	  items.push(second)
     }
-	if (third){
-      stepUp += 1
-	  items.push(third)
-    }
-    if (fourth){
-      stepUp += 1
-	  items.push(fourth)
-    }
-	
-	//COMBINE ALL THAT MOVES
 
-	/*
     if (stepUp == 2 ){
       tl.add(combine(first,second))
     }
-	*/
-	
-	if (stepUp > 1 ){
-      tl.add(combine(items))
-    }
-
-	//FOR 1 MOVE CASE
 
     if (stepUp == 1){
         if (first){
@@ -700,12 +660,6 @@ function forward(){
         }
         if (second){
           tl.add(second)
-        }
-		if (third){
-          tl.add(third)
-        }
-		if (fourth){
-          tl.add(fourth)
         }
     }
   
@@ -723,81 +677,6 @@ function forward(){
 }
 
 
-function forwardByStep(){
-  calcLimit()
-  var status = false;
-  var stepUp = 0;
-  
-  //var indicator = checkSpeed()
-
-    var first = move(car1)
-    var second = move(car2)
-    
-	var third = move(car3)
-    var fourth = move(car4)
-	var items = []
-	
-	//CHECK IF AT LEAST 1 MOVES
-
-    if (first){
-      stepUp += 1
-	  items.push(first)
-    }
-    if (second){
-      stepUp += 1
-	  items.push(second)
-    }
-	if (third){
-      stepUp += 1
-	  items.push(third)
-    }
-    if (fourth){
-      stepUp += 1
-	  items.push(fourth)
-    }
-	
-	//COMBINE ALL THAT MOVES
-
-	/*
-    if (stepUp == 2 ){
-      tl.add(combine(first,second))
-    }
-	*/
-	
-	if (stepUp > 1 ){
-      tl.add(combine(items))
-    }
-
-	//FOR 1 MOVE CASE
-
-    if (stepUp == 1){
-        if (first){
-          tl.add(first)
-        }
-        if (second){
-          tl.add(second)
-        }
-		if (third){
-          tl.add(third)
-        }
-		if (fourth){
-          tl.add(fourth)
-        }
-    }
-  
-  if (stepUp > 0){
-    
-    //$step.val(parseInt($step.val())+1);
-    status = true;
-    
-  }
-
-  stepUp = 0;
-  return status;
-
-
-}
-
 
 function forwardInverted(){
   calcLimit()
@@ -806,61 +685,28 @@ function forwardInverted(){
   
   var first = move(car1)
   var second = moveBack(car2)
-  
-  var third = move(car3)
-  var fourth = moveBack2(car4)
-  var items = []
-  
-    //CHECK IF AT LEAST 1 MOVES
 
     if (first){
       stepUp += 1
-	  items.push(first)
     }
     if (second){
       stepUp += 1
-	  items.push(second)
-    }
-	if (third){
-      stepUp += 1
-	  items.push(third)
-    }
-    if (fourth){
-      stepUp += 1
-	  items.push(fourth)
     }
 
-	//COMBINE ALL THAT MOVES
-
-	/*
     if (stepUp == 2 ){
       tl.add(combine(first,second))
     }
-	*/
-	
-	if (stepUp > 1 ){
-      tl.add(combine(items))
-    }
-
-	//FOR 1 MOVE CASE
 
     if (stepUp == 1){
-        if (first){
+      if (first){
           tl.add(first)
-        }
-        if (second){
+      }
+      if (second){
           tl.add(second)
-        }
-		if (third){
-          tl.add(third)
-        }
-		if (fourth){
-          tl.add(fourth)
-        }
+      }
     }
 
-	
-	
+
   if (stepUp > 0){
     $step.val(parseInt($step.val())+1);
     status = true;
@@ -882,7 +728,7 @@ function init(){
 
     //executeRev()
     tl.add(move2(car2))
-	tl.add(move3(car4))
+
     
 
   }
