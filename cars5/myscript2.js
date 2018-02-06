@@ -89,14 +89,14 @@ $step.change(function(){
 	
 	var steps = parseInt($step.val());
 	console.log(steps)
-	speedUpForReset = 1;
-	executeRev();
+	//speedUpForReset = 1;
+	//executeRev();
 	
 	for (i=0;i<steps; i++){
-		forwardByStep();
+		forwardInvByStep();
 		
 	}
-	speedUpForReset = 0;
+	//speedUpForReset = 0;
 	
 });
 
@@ -872,6 +872,80 @@ function forwardInverted(){
 
 }
 
+
+
+function forwardInvByStep(){
+  calcLimit()
+  var status = false;
+  var stepUp = 0;
+  
+  var first = move(car1)
+  var second = moveBack(car2)
+  
+  var third = move(car3)
+  var fourth = moveBack2(car4)
+  var items = []
+  
+    //CHECK IF AT LEAST 1 MOVES
+
+    if (first){
+      stepUp += 1
+	  items.push(first)
+    }
+    if (second){
+      stepUp += 1
+	  items.push(second)
+    }
+	if (third){
+      stepUp += 1
+	  items.push(third)
+    }
+    if (fourth){
+      stepUp += 1
+	  items.push(fourth)
+    }
+
+	//COMBINE ALL THAT MOVES
+
+	/*
+    if (stepUp == 2 ){
+      tl.add(combine(first,second))
+    }
+	*/
+	
+	if (stepUp > 1 ){
+      tl.add(combine(items))
+    }
+
+	//FOR 1 MOVE CASE
+
+    if (stepUp == 1){
+        if (first){
+          tl.add(first)
+        }
+        if (second){
+          tl.add(second)
+        }
+		if (third){
+          tl.add(third)
+        }
+		if (fourth){
+          tl.add(fourth)
+        }
+    }
+
+	
+	
+  if (stepUp > 0){
+   // $step.val(parseInt($step.val())+1);
+    status = true;
+  }
+
+  stepUp = 0;
+
+  return status;
+
+}
 
 function init(){
   calcLimit()
