@@ -226,6 +226,11 @@ h3 {
 	letter-spacing: 1.5px;
 }
 
+.buttonGroup:hover {
+   color:red;
+	-webkit-text-stroke: 1.5px white;
+}
+
 .menuButton:hover {
 	 
 	  //border-color: #7a1414;
