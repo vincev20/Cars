@@ -109,6 +109,12 @@ function combine(items){
 }
 
 
+
+function init2(){
+	
+	forward(vehicle2,100)
+}
+
 function play(){
 	//tl.paused( !tl.paused() )
 	
@@ -309,8 +315,8 @@ function init() {
 	
 	
     stage.addChild(g)
-	
-	 stage.update();
+	//init2();
+	stage.update();
 		
  	
 }
