@@ -115,6 +115,14 @@ function init2(){
 	forward(vehicle2,100)
 }
 
+function showPicture(obj,speed,options){
+
+		var timeline = new TimelineMax();
+		timeline.to(obj,0,{ visible: "=true", ease: Linear.easeNone})
+    	console.log("Show Picture Fired")
+        return timeline;
+}
+
 function play(){
 	//tl.paused( !tl.paused() )
 	
@@ -127,6 +135,28 @@ function play(){
 		tl.reversed(false)
 	}
 
+	//if ( $distance1.text() > (100 * 0.9)){
+	if ( $distance1.text() > (100 * 0.9) ) {
+		//coll.push(showPicture(shape2))
+
+		   if (shape2.visible ==false){
+		      
+		   		tl.add(showPicture(shape2))
+		   }
+
+		   if (vehicle3.visible==false){
+		      
+		  		tl.add(showPicture(vehicle3))
+		   }
+		   
+		   if (vehicle4.visible==false){
+		      
+		   		tl.add(showPicture(vehicle4))
+		   }
+		   // tl.add(showPicture(vehicle3))
+		   // tl.add(showPicture(vehicle4))
+	}
+
 	timer = setTimeout(function () {
 		
 		var coll = [];
@@ -136,11 +166,21 @@ function play(){
 		var tempSpeed4 = tempSpeed2 / 4;
 		coll.push(forward(vehicle1,tempSpeed));
 		coll.push(forward(vehicle2,tempSpeed2));
+		coll.push(forward(vehicle3,tempSpeed3));
+		coll.push(forward(vehicle4,tempSpeed4));
+
+
+		var tempVehicle1x = vehicle1.x;
+		//console.log(vehicle1.x)
+		
+
 		//coll.push(forward(vehicle3,tempSpeed3));
 		//coll.push(forward(vehicle4,tempSpeed4));
 		tl.add(combine(coll))
 		
+		 
 		if (toggle == false){
+			//tl.to(shape,1,{ alpha: 0 } )
 			/*
 			stage.removeChild(shape);
 			stage.addChild(shape2);
@@ -155,6 +195,7 @@ function play(){
 			*/
 			toggle = true;
 		}else{
+			//tl.to(shape,1,{ alpha: 1 } )
 			/*
 			stage.removeChild(shape2);
 			stage.addChild(shape);
@@ -181,9 +222,16 @@ function forward(obj,speed,options){
 	
     var timeline = new TimelineMax();
 	timeline.to(obj,1,{ x: "+=" + speed, onUpdate:updateStage, ease: Linear.easeNone})
+
+
+
+	//shape.graphics.beginBitmapFill(img);
 	return timeline;
      
 }
+
+
+
 
 $pauseButton.click(function(){
  
@@ -294,7 +342,8 @@ function init() {
  //];
 	 //shape.cache(0, 0,shape.width, shape.height);
 	
-	
+	//shape.visi
+
 	shape2 = new createjs.Shape();
 	shape2.graphics.beginBitmapFill(img2);
 	shape2.graphics.drawRect(0,0,800,600);
@@ -304,11 +353,21 @@ function init() {
 	
 	//console.log("Here")
 	
-	 stage.addChild(shape);
+	//shape.visible = false;
+	shape2.visible = false;
+	stage.addChild(shape);
+	stage.addChild(shape2);
 	stage.addChild(vehicle1);
-	 stage.addChild(vehicle2);
-	//stage.addChild(vehicle3);
-	 //stage.addChild(vehicle4);
+	stage.addChild(vehicle2);
+	
+	vehicle3.visible = false;
+	vehicle4.visible = false;
+	
+
+	stage.addChild(vehicle3);
+	stage.addChild(vehicle4);
+	
+
 	stage.addChild(flag);
 	//stage.addChild(g)
 	//g.graphics.moveTo(50,50).setStrokeStyle(1).beginStroke("#ff0000").lineTo(100,100);
@@ -470,8 +529,8 @@ function buildTimeline() {
 	
 	function updateUI2() {
 		//change slider value
-		 progressSlider.slider("value", tl.progress() *100);
-		 totalProgressSlider.slider("value", tl.totalProgress() *100);
+		progressSlider.slider("value", tl.progress() *100);
+		totalProgressSlider.slider("value", tl.totalProgress() *100);
 		
 		//update display of values
 		progressValue.html(tl.progress().toFixed(2));
@@ -498,6 +557,8 @@ function buildTimeline() {
 		
 		$distanceBetween.text(absval);
 		
+		//console.log(shape);
+
 		if ( tempDist1 == tempDist2 ){
 		
 		    if (tempDist1 > 10 ){	
