@@ -9,19 +9,23 @@ var $fourth = $("#fourth")
 var $fifth = $("#fifth")
 var $fields = $(".fields")
 
+var $framePic = $("#framePic")
+
 $first.keyup(function(){
 	var firstVal = $first.val()
 	//console(.log(firstVal);
 	if (isNaN(firstVal)){
-		alert("Please Enter a Number")
+		//alert("Please Enter a Number")
+		$framePic.attr("src","newimages/monkeyFull3.png");
 		$final.prop('disabled', true);	
 	}else if(firstVal < 1 || firstVal > 300){
-		alert("Please Enter a Number from 1 to 300")
+		//alert("Please Enter a Number from 1 to 300")
+		$framePic.attr("src","newimages/monkeyFull3.png");
 		$final.prop('disabled', true);	
 		
 	}else{
 		$("#final").removeAttr("disabled");	
-		
+		$framePic.attr("src","newimages/monkeyFull.jpg");
 	} 
 	
 	
@@ -32,15 +36,15 @@ $second.keyup(function(){
 	var val = $second.val()
 	//console(.log(firstVal);
 	if (isNaN(val)){
-		alert("Please Enter a Number")
+		$framePic.attr("src","newimages/monkeyFull3.png");
 		$final.prop('disabled', true);	
 	}else if(val < 1 || val > 300){
-		alert("Please Enter a Number from 1 to 300")
+		$framePic.attr("src","newimages/monkeyFull3.png");
 		$final.prop('disabled', true);	
 		
 	}else{
 		$("#final").removeAttr("disabled");	
-		
+		$framePic.attr("src","newimages/monkeyFull.jpg");
 	} 
 	
 	
@@ -51,15 +55,15 @@ $third.keyup(function(){
 	var val = $third.val()
 	//console(.log(firstVal);
 	if (isNaN(val)){
-		alert("Please Enter a Number")
+		$framePic.attr("src","newimages/monkeyFull3.png");
 		$final.prop('disabled', true);	
 	}else if(val < 1 || val > 300){
-		alert("Please Enter a Number from 1 to 300")
+		$framePic.attr("src","newimages/monkeyFull3.png");
 		$final.prop('disabled', true);	
 		
 	}else{
 		$("#final").removeAttr("disabled");	
-		
+		$framePic.attr("src","newimages/monkeyFull.jpg");
 	} 
 	
 	
@@ -69,15 +73,15 @@ $fourth.keyup(function(){
 	var val = $fourth.val()
 	//console(.log(firstVal);
 	if (isNaN(val)){
-		alert("Please Enter a Number")
+		$framePic.attr("src","newimages/monkeyFull3.png");
 		$final.prop('disabled', true);	
 	}else if(val < 1 || val > 300){
-		alert("Please Enter a Number from 1 to 300")
+		$framePic.attr("src","newimages/monkeyFull3.png");
 		$final.prop('disabled', true);	
 		
 	}else{
 		$("#final").removeAttr("disabled");	
-		
+		$framePic.attr("src","newimages/monkeyFull.jpg");
 	} 
 	
 	
@@ -88,15 +92,15 @@ $fifth.keyup(function(){
 	var val = $fifth.val()
 	//console(.log(firstVal);
 	if (isNaN(val)){
-		alert("Please Enter a Number")
+		$framePic.attr("src","newimages/monkeyFull3.png");
 		$final.prop('disabled', true);	
 	}else if(val < 1 || val > 300){
-		alert("Please Enter a Number from 1 to 300")
+		$framePic.attr("src","newimages/monkeyFull3.png");
 		$final.prop('disabled', true);	
 		
 	}else{
 		$("#final").removeAttr("disabled");	
-		
+		$framePic.attr("src","newimages/monkeyFull.jpg");
 	} 
 	
 	

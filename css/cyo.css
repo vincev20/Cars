@@ -42,6 +42,10 @@ body {
 }
 
 
+.stack {
+	display: none;
+}
+
 .experience {
 	
 	font-family: Verdana;
