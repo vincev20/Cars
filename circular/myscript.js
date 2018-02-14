@@ -10,7 +10,9 @@ var $box = $("#box")[0]
 var $button1 = $("#button1")
 var $button2 = $("#button2")
 
+
 var $steps = $("#steps")
+var $scoreBox = $("#score")
 
 var $button5 = $("#button5")
 var $button6 = $("#button6")
@@ -58,7 +60,7 @@ var $speed2Input = $("#speed2")
 var $lengthInput = $("#distance0")
 var $gap = $("#space")
 
-
+//var $scoreBox = $("#space")
 
 var distance0 = parseInt($("#distance0").val()); 
 
@@ -280,7 +282,7 @@ function add20s() {
     
 function updateHandler() {
   scoreDisplay.innerHTML = game.score;
-
+  $scoreBox.val(game.score)
 
   //calculate
 

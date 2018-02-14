@@ -11,6 +11,7 @@ var $button1 = $("#button1")
 var $button2 = $("#button2")
 
 var $steps = $("#steps")
+var $scoreBox = $("#score")
 
 var $button5 = $("#button5")
 var $button6 = $("#button6")
@@ -293,6 +294,7 @@ function add20s() {
     
 function updateHandler() {
   scoreDisplay.innerHTML = game.score;
+  $scoreBox.val(game.score)
 
 
 
