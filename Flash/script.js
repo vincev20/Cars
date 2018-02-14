@@ -28,6 +28,7 @@ var $pauseButton = $("#pauseButton");
 var $rewindButton = $("#rewindButton");
 var $forwardButton = $("#forwardButton");
 var $resetButton = $("#resetButton");
+var $zoomButton = $("#zoomButton");
 
 var $step = $("#step");
 var $speed1 = $("#speed1");
@@ -91,6 +92,17 @@ $playButton.click(function(){
   ///model.next2()
 	play()
 	
+	
+});
+
+$zoomButton.click(function(){
+ 
+  //model.play()
+  ///model.next2()
+	//play()
+	tl.add(forward2(vehicle1,20))
+	tl.totalTime(15);
+	console.log("At Zoom")
 	
 });
 
@@ -231,6 +243,18 @@ function forward(obj,speed,options){
 }
 
 
+function forward2(obj,speed,options){
+	
+    var timeline = new TimelineMax();
+	timeline.to(obj,15,{ x: "+=" + speed * 5, onUpdate:updateStage, ease: Linear.easeNone})
+
+
+	//timeline.pause()
+
+	//shape.graphics.beginBitmapFill(img);
+	return timeline;
+     
+}
 
 
 $pauseButton.click(function(){
