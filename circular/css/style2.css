@@ -339,8 +339,8 @@ label {
 }
 
 .button:hover {
-	background: white;
-	color: black;
+	background: red;
+	color: white;
 }
 
 .buttonBar {
@@ -366,6 +366,7 @@ label {
 	margin-right: 0;
 	margin-left: 0px;
 	margin-bottom: 0;
+	-webkit-text-stroke: 0.5px white;
 }
 
 #firstTopButton{
