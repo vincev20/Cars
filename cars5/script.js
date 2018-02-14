@@ -39,7 +39,7 @@ var $distanceBetween = $("#distanceBetween");
 
 var $distance1 = $("#distance1");
 var $distance2 = $("#distance2");
-
+$distance0.val(0)
 $distance1.val(0)
 $distance2.val(0)
 
@@ -67,15 +67,20 @@ img2.src = "images/side2.jpg"
 var timer;
 //update2();
 
-$time.change(function(){
-	var temptime = parseInt($time.val())
+$step.change(function(){
+	var temptime = parseInt($step.val())
 	
-	tl.totalTime(temptime);
+	tl.time(temptime);
 	tl.pause();
+	console.log("here")
 });
 
 
-
+$distance0.change(function(){
+	var tempDistance = parseInt($distance0.val()) 
+	init2(tempDistance)
+ 
+});
 
 //var tl = new TimelineMax({onUpdate:updateUI, repeat: 0, repeatDelay: 0, delay: 0 });
 var tl = new TimelineMax({repeat: 0, repeatDelay: 0, delay: 0 });
@@ -84,7 +89,7 @@ var revtl = new TimelineMax({repeat: 0, repeatDelay: 0, delay: 0 });
 
 $forwardButton.click(function(){
  
-  model.next()
+  playOnce()
 
 });
 
@@ -124,9 +129,10 @@ function combine(items){
 
 
 
-function init2(){
+function init2(e){
 	
-	forward(vehicle2,100)
+	forward(vehicle2,e)
+	forward(vehicle4,e/4)
 }
 
 function showPicture(obj,speed,options){
@@ -145,6 +151,25 @@ function hidePicture(obj,speed,options){
     	console.log("Show Picture Fired")
         return timeline;
 }
+
+
+function playOnce(){
+	//tl.paused( !tl.paused() )
+		var coll = [];
+		var tempSpeed = parseInt($speed1.val());
+		var tempSpeed2 = parseInt($speed2.val());
+		var tempSpeed3 = tempSpeed / 4;
+		var tempSpeed4 = tempSpeed2 / 4;
+		coll.push(forward(vehicle1,tempSpeed));
+		coll.push(forward(vehicle2,tempSpeed2));
+		coll.push(forward(vehicle3,tempSpeed3));
+		coll.push(forward(vehicle4,tempSpeed4));
+
+		tl.add(combine(coll))
+	
+}
+
+
 
 function play(){
 	//tl.paused( !tl.paused() )
@@ -168,6 +193,7 @@ function play(){
 		   		tl.add(showPicture(shape2),"a")
 			    tl.add(hidePicture(vehicle2),"a")
 			    tl.add(hidePicture(vehicle1),"a")
+			    tl.add(hidePicture(flag),"a")
 			   
 		   }
 
@@ -320,10 +346,10 @@ function init() {
 	
 	 var tempDelay = parseInt($delay.val());
 	
-	 flag = new createjs.Bitmap("images/skate-01.png");
+	 flag = new createjs.Bitmap("images/flag.png");
 	 flag.scaleX = 0.1;
 	 flag.scaleY = 0.1;
-	 
+	 flag.visible = false;
 	
 	 vehicle1 = new createjs.Bitmap("images/skate-01b.png");
 	
@@ -564,8 +590,24 @@ function drawConnectingLine(a,b){
 	
 }
 
-//function setFlag(){
-
+function setFlag(){
+	flag.visible = true;
+	
+	if (vehicle1.visible == true){
+		flag.x = vehicle1.x
+		flag.y = vehicle1.y
+	}
+	
+	if (vehicle3.visible == true){
+		flag.x = vehicle3.x
+		flag.y = vehicle3.y -15
+		flag.scaleX = .03
+		flag.scaleY = .03
+	}
+	//var tempY = vehicle1.y
+	//flag.y = ((tempY - vehicle2.y / 2)) + tempY
+}
+	
 function buildTimeline() {
 		
 		//note this timeline uses 3D transforms which will only work in recent versions of Safari, Chrome, and FireFox. IE10 will support 3D transforms as well. All other browsers simply will not show those properties being tweened. 
@@ -611,7 +653,7 @@ function buildTimeline() {
 		
 		    if (tempDist1 > 10 ){	
 				
-				//setFlag();
+				setFlag();
 				//flag.x(vehicle1.x)
 				//flag.y((vehicle1.y - vehicle2.y / 2))
 				//flag.y(100)
