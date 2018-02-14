@@ -168,8 +168,10 @@ if( yourAnswer ) {
 		alert("Your Answer " + yourAnswer + " and Correct Answer " + answer + "\nGood Job!");
 	}else {
 
+		
 		//alert("Your Answer " + yourAnswer + " and Correct Answer " + answer + "\n Among the monkeys, peanut sacks, and time taken, can you guess which of these are directly proportionate, and which are inversely proportionate? \nTry Again.");
-		alert("Among the monkeys, peanut sacks, and time taken, can you guess which of these are directly proportionate, and which are inversely proportionate? \nIncorrect. Try Again.");
+		//alert("Among the monkeys, peanut sacks, and time taken, can you guess which of these are directly proportionate, and which are inversely proportionate? \nIncorrect. Try Again.");
+		alert("Incorrect Answer. Try Again")
 	}
 
 }

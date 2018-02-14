@@ -7,7 +7,7 @@
     <link rel="stylesheet" href="css/style2.css">
   </head>
 
-  <body>
+  <body onload="init();">
   	<div class="main">
   	  <h1>Simulation 1</h1>
   	  <div class="frame">
@@ -16,21 +16,27 @@
         		<!--<img class="town" src="newimages/downshot2.png">-->
                 
                 
+			<canvas id="demoCanvas" width="840" height="400"></canvas>
+			
+<!--
             	<img class="town" src="newimages/wall_skater3.jpg">
                  <img id="skater2" src="newimages/skate-02.png"> 
                 <img id="skater1" src="newimages/skate-01.png">
+-->
                
             </div>
       
-          <div id="road2" class="sky">
+<!--          <div id="road2" class="sky">-->
         		<!--<img class="town" src="newimages/downshot2.png">-->
                 
+<!--
                 
             	<img class="town" src="newimages/side.jpg">
                  <img id="skater3" src="newimages/skate-02.png"> 
                 <img id="skater4" src="newimages/skate-01.png">
+-->
                
-            </div>
+<!--            </div>-->
       
       
       	   <div class="inputs">
@@ -56,6 +62,9 @@
                     <label>km</label>
                    </div>
                   
+		  <input id="distance1" type="hidden" value="0" >
+						 <input id="distance2" type="hidden" value="0" >
+		  
                    <div class="input">
                                 <label>Distance Between:</label>
                                 <span id="distanceBetween" class="blanks">0</span
@@ -93,16 +102,16 @@
        </div>
         
         <div class="buttonBar"  >
-           <a id="button3" class="button">
+           <a id="playButton" class="button">
            		Play
            </a>
-           <a id="button4" class="button">
+           <a id="pauseButton" class="button">
            		Pause
            </a>
-           <a id="button2" class="button">
+           <a id="rewindButton" class="button">
            		Rewind
            </a>
-           <a id="button1" class="button">
+           <a id="forwardButton" class="button">
            		Forward
            </a>
            <a id="resetButton" class="button">
@@ -120,9 +129,19 @@
   	</div>  
     
   
-	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+<script src="js/jquery/jquery-1.8.2.js"></script>
+<script src="js/jquery/jquery-ui-1.9.1.custom.min.js"></script>
+<!-- script for making jQuery UI components respond to touch input -->
+<script src="js/jquery/jquery.ui.touch-punch.js"></script>
+		
+   <script src="https://code.createjs.com/tweenjs-0.6.2.min.js"></script>
+	
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/snap.svg/0.3.0/snap.svg-min.js"></script>
+	
+  <script src="https://code.createjs.com/easeljs-0.8.2.min.js"></script>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/1.20.3/TweenMax.min.js"></script>
-    <script src="myscript.js"></script>
+	
+	<script src="script.js"></script>
   </body>
 	
   
