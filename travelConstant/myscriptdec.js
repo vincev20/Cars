@@ -27,7 +27,7 @@ var $check1 = $("#check1");
 var $check2 = $("#check2");
 var $chartContainer = $("#chartContainer");
 var $chartContainer2 = $("#chartContainer2");
-
+var $stepDisplay = $("#stepDisplay");
 $("#check1").click(function(){
   //init();
   $chartContainer.toggle()
@@ -371,8 +371,9 @@ var stepDown = 0;
 */
   if (stepDown > 0){
 
-
-    $step.val(parseInt($step.val())-1);
+	  var tempCount = parseInt($step.val())-1
+    $step.val(tempCount);
+	  $stepDisplay.text(tempCount);
 
 
   }
@@ -477,7 +478,10 @@ function forward(){
 	
   stepUp = 1;
   if (stepUp > 0){
-  $step.val(parseInt($step.val())+1);
+	  var tempCount = parseInt($step.val())+1
+	  
+  $step.val(tempCount);
+  $stepDisplay.text(tempCount)
   status = true;
   }
 

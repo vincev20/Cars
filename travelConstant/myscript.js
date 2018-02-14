@@ -50,6 +50,7 @@ var total2 = 0;
 
 var delay = $("#delay").val();
 var $step = $("#step");
+var $stepDisplay = $("#stepDisplay");
 
 var limit = 700
 var lowerLimit = 0
@@ -72,6 +73,7 @@ var timer;
 
 
 $step.val(0)
+$stepDisplay.text("0")
 
 var i=0;
 
@@ -376,7 +378,7 @@ var stepDown = 0;
 
 
     $step.val(parseInt($step.val())-1);
-
+	$stepDisplay.text(parseInt($step.val())-1)
 
   }
   stepDown = 0;
@@ -469,7 +471,11 @@ function forward(){
 
   stepUp = 1;	
   if (stepUp > 0){
-  $step.val(parseInt($step.val())+1);
+	  
+	  var tempCount = parseInt($step.val())+1
+  $step.val(tempCount);
+  $stepDisplay.text(tempCount);
+  	  
   status = true;
   }
 	

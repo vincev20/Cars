@@ -36,14 +36,18 @@
       <option value="travelinc.html">Increasing</option>
       <option value="traveldec.html">Decreasing</option>
 
-    </select>Speed<br>
+    </select> Speed<br>
       <input type="checkbox" id="check2" value="Car">Distance-Time Graph<br>
      <input type="checkbox" id="check1" value="">Speed-Time Graph<br>
      
       <div class="inputs">
         		 Time/Clock Counter:
-				<span  id="step">0</span> Hours
+		  		<input type="hidden" id="step" value="0" readonly> 
+				<span  id="stepDisplay">0</span> Hours
       </div>
+		 
+		  
+		  
       	   <div class="inputs" style="display:none">
         		 Time/Clock Counter:
 				<span  id="step">0</span>Hours
@@ -95,6 +99,7 @@
             <br>
             <br>
             <br>
+		    <br>
         
          <div class="buttonBar firstBar">
            <a id="backButton" class="button3" href="../home.html">
